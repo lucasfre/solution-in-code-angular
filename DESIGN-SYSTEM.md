@@ -12,7 +12,7 @@ Identidade visual da Solution in Code aplicada ao site. A fonte da verdade é o 
 <!-- Logo -->
 <app-logo class="text-sm" />                       <!-- fundo claro -->
 <app-logo tone="inverse" class="text-sm" />        <!-- fundo escuro -->
-<app-logo variant="symbol" class="text-base" />    <!-- só o símbolo -->
+<img src="brand/symbol.svg" alt="Solution in Code" class="h-10 w-10" />  <!-- só o símbolo -->
 
 <!-- Texto -->
 <h2 class="text-3xl font-bold text-fg">Título</h2>
@@ -45,7 +45,7 @@ Um **S** formado por dois chevrons de código encaixados: `<` em cima e `>` emba
 | Variante | Quando usar | No código | Arquivo |
 |---|---|---|---|
 | **Completo** (símbolo + "SOLUTION / IN CODE") | Cabeçalho, rodapé, documentos, apresentações | `<app-logo />` | `brand/logo.png`, `brand/logo-inverse.png` |
-| **Símbolo** | Favicon, ícone de app, avatar de rede social, espaços pequenos | `<app-logo variant="symbol" />` | `brand/symbol.svg`, `brand/symbol-inverse.svg` |
+| **Símbolo** | Favicon, ícone de app, avatar de rede social, espaços pequenos | `<img src="brand/symbol.svg" alt="Solution in Code">` | `brand/symbol.svg`, `brand/symbol-inverse.svg` |
 
 - **Tom:** `tone="default"` (padrão) para fundo claro, com traço de cima em `ink`. `tone="inverse"` para fundo escuro, com traço de cima em `paper`. O traço laranja e o "IN" laranja não mudam.
 - **Tamanho:** o logo segue o `font-size` do elemento (classes `text-*`). O símbolo tem 2,4× o tamanho da fonte.
@@ -65,7 +65,22 @@ Um **S** formado por dois chevrons de código encaixados: `<` em cima e `>` emba
 | `public/favicon.svg`, `public/favicon.ico` (16/32/48) | Ícone da aba do navegador |
 | `public/apple-touch-icon.png` (180×180) | Ícone ao salvar o site na tela inicial do iPhone |
 
-O nome no logo usa a fonte **Space Grotesk Bold**, em caixa alta. Os PNGs foram gerados a partir dos SVGs; se o símbolo mudar, gere os PNGs de novo.
+O nome no logo usa a fonte **Space Grotesk Bold**, em caixa alta.
+
+### Gerar os PNGs de novo
+
+Se o símbolo ou as cores mudarem, edite os SVGs e gere os ícones no macOS com o Chrome e o `sips`:
+
+```bash
+CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+"$CHROME" --headless=new --hide-scrollbars --window-size=1024,1024 --screenshot=public/brand/app-icon-1024.png "file://$PWD/public/brand/app-icon.svg"
+"$CHROME" --headless=new --hide-scrollbars --window-size=1024,1024 --screenshot=public/brand/app-icon-inverse-1024.png "file://$PWD/public/brand/app-icon-inverse.svg"
+sips -z 512 512 public/brand/app-icon-1024.png --out public/brand/app-icon-512.png
+sips -z 180 180 public/brand/app-icon-1024.png --out public/apple-touch-icon.png
+sips -s format ico -z 48 48 public/brand/app-icon-1024.png --out public/favicon.ico
+```
+
+Abra os PNGs gerados antes do commit para conferir que não saíram em branco. O `favicon.ico` sai com um tamanho só (48 px); os navegadores atuais usam o `favicon.svg`. O `logo.png` e o `logo-inverse.png` dependem da fonte: capture o `<app-logo>` renderizado no navegador, com fundo transparente.
 
 ## Cores
 
@@ -77,7 +92,7 @@ O nome no logo usa a fonte **Space Grotesk Bold**, em caixa alta. Os PNGs foram 
 | `paper` | `#FAFAF8` | Branco da marca: fundo da página |
 | `orange` | `#FF5B1F` | Laranja da marca: destaque, botões, traço final do S |
 
-A paleta fica em variáveis CSS (`--sic-ink`, `--sic-paper`, `--sic-orange`) e **só é usada para definir os tokens abaixo**. Nos componentes, use sempre os tokens.
+Os valores ficam direto nos tokens do `@theme` (`canvas` = paper, `fg` e `inverse` = ink, `accent` = laranja). Nos componentes, use sempre os tokens.
 
 ### Tokens (classes do Tailwind)
 
@@ -94,12 +109,11 @@ Cada token vira classe do Tailwind com qualquer prefixo de cor: `bg-`, `text-`, 
 | `accent` | `#FF5B1F` | Fundo de botão principal; texto laranja **só em fundo escuro** |
 | `accent-hover` | `#FF7A47` | Hover do botão principal |
 | `accent-strong` | `#C2410C` | **Texto e ícones laranja sobre fundo claro** (`text-accent-strong`) |
-| `accent-soft` | `#FFE9E0` | Fundo suave: ícones em destaque, avisos |
+| `accent-soft` | `#FFF1EB` | Fundo suave: ícones em destaque, avisos (aceita `.link` por cima com contraste AA) |
 | `on-accent` | `#121212` | Texto sobre o laranja (`text-on-accent`) |
 | `inverse` | `#121212` | Fundo de seções escuras (`bg-inverse`) |
 | `inverse-fg` | `#FAFAF8` | Texto principal em seção escura |
 | `inverse-muted` | `#B8B8B4` | Texto secundário em seção escura |
-| `inverse-line` | `#2A2A28` | Bordas em seção escura |
 
 ### Regras de contraste (WCAG AA)
 
@@ -132,7 +146,7 @@ Todos estão em [`src/styles.css`](src/styles.css) (`@layer components`), então
 
 | Classe / componente | O que é |
 |---|---|
-| `<app-logo>` | Logo. Entradas: `variant` (`full` \| `symbol`) e `tone` (`default` \| `inverse`). Já tem `role="img"` e `aria-label`. |
+| `<app-logo>` | Logo completo. Entrada `tone` (`default` \| `inverse`). Já tem `role="img"` e `aria-label`. |
 | `.btn-primary` | Botão principal: laranja com texto escuro. Uma ação principal por tela. |
 | `.btn-secondary` | Botão secundário: branco com borda. |
 | `.btn-light` | Botão claro para usar sobre seção escura (ex.: botões das lojas). |
@@ -143,10 +157,10 @@ Todos estão em [`src/styles.css`](src/styles.css) (`@layer components`), então
 
 **Ícones:** SVG inline 24×24, `fill="none"`, `stroke="currentColor"`, `stroke-width="2"`, pontas arredondadas (estilo outline). A cor vem da classe de texto (`text-accent-strong`, `text-fg-muted`...).
 
-**Foco e seleção:** todo elemento focado pelo teclado ganha contorno laranja (`:focus-visible`), e o texto selecionado fica com fundo laranja. As duas coisas são globais, não precisa fazer nada.
+**Foco e seleção:** todo elemento focado pelo teclado ganha contorno laranja forte (`:focus-visible`, `accent-strong`, contraste de 3:1 ou mais nos fundos claro e escuro), e o texto selecionado fica com fundo laranja. As duas coisas são globais, não precisa fazer nada.
 
 ## Como evoluir
 
 - **Nova cor:** adicione o token no `@theme` de `src/styles.css` (ex.: `--color-success: #15803d;`), confira o contraste e registre na tabela de tokens acima.
 - **Novo componente visual reaproveitável:** adicione em `@layer components` no `src/styles.css` (com `@apply` de utilitários) e registre na tabela de componentes.
-- **Mudou o símbolo ou as cores da marca:** atualize o `<app-logo>`, os SVGs de `public/brand/` e o `public/favicon.svg`, e gere os PNGs e o `favicon.ico` de novo.
+- **Mudou o símbolo ou as cores da marca:** atualize o `<app-logo>`, os SVGs de `public/brand/` e o `public/favicon.svg`, e gere os PNGs de novo (comandos em "Gerar os PNGs de novo").

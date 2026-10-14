@@ -18,7 +18,7 @@ Site institucional da **Solution in Code**, publicado em [solutionincode.com.br]
 ```bash
 npm ci          # instala as dependências
 npm start       # servidor local em http://localhost:4200
-npm test        # testes unitários (Karma)
+npm test        # Karma: ainda não há testes, falha com TS18003 até existir o primeiro *.spec.ts
 npm run build   # gera o site publicado em docs/
 ```
 

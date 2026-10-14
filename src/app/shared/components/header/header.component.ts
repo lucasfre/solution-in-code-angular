@@ -9,7 +9,7 @@ import { LogoComponent } from '../logo/logo.component';
   template: `
     <header class="border-b border-line bg-canvas/85 backdrop-blur-sm sticky top-0 z-50">
       <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a routerLink="/" class="rounded-md" aria-label="Solution in Code — Início">
+        <a routerLink="/" class="rounded-md hover:opacity-80 transition-opacity" aria-label="Solution in Code — Início">
           <app-logo class="text-sm" />
         </a>
 
@@ -30,13 +30,13 @@ import { LogoComponent } from '../logo/logo.component';
 
         <ul class="hidden sm:flex items-center gap-8">
           <li>
-            <a routerLink="/" routerLinkActive="!text-accent-strong" [routerLinkActiveOptions]="{ exact: true }"
+            <a routerLink="/" routerLinkActive="text-accent-strong!" [routerLinkActiveOptions]="{ exact: true }"
                class="text-sm font-medium text-fg-muted hover:text-fg transition-colors">
               Início
             </a>
           </li>
           <li>
-            <a routerLink="/produtos" routerLinkActive="!text-accent-strong"
+            <a routerLink="/produtos" routerLinkActive="text-accent-strong!"
                class="text-sm font-medium text-fg-muted hover:text-fg transition-colors">
               Produtos
             </a>
@@ -48,14 +48,14 @@ import { LogoComponent } from '../logo/logo.component';
         <ul class="sm:hidden border-t border-line px-4 py-4 space-y-3">
           <li>
             <a routerLink="/" (click)="menuOpen = false"
-               routerLinkActive="!text-accent-strong" [routerLinkActiveOptions]="{ exact: true }"
+               routerLinkActive="text-accent-strong!" [routerLinkActiveOptions]="{ exact: true }"
                class="block text-sm font-medium text-fg-muted hover:text-fg transition-colors">
               Início
             </a>
           </li>
           <li>
             <a routerLink="/produtos" (click)="menuOpen = false"
-               routerLinkActive="!text-accent-strong"
+               routerLinkActive="text-accent-strong!"
                class="block text-sm font-medium text-fg-muted hover:text-fg transition-colors">
               Produtos
             </a>

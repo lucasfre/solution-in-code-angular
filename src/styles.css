@@ -11,38 +11,30 @@
  * Use sempre os tokens semânticos (bg-canvas, text-fg, text-accent-strong...).
  */
 
-/* Paleta da marca (valores brutos). Use só para definir os tokens semânticos. */
-:root {
-  --sic-ink: #121212;
-  --sic-paper: #fafaf8;
-  --sic-orange: #ff5b1f;
-}
-
 @theme {
   --color-*: initial;
 
   /* Superfícies (fundo claro) */
-  --color-canvas: var(--sic-paper);
+  --color-canvas: #fafaf8; /* paper */
   --color-surface: #ffffff;
   --color-surface-muted: #f2f1ec;
   --color-line: #e6e4df;
 
   /* Texto sobre fundo claro */
-  --color-fg: var(--sic-ink);
+  --color-fg: #121212; /* ink */
   --color-fg-muted: #5c5c57;
 
   /* Destaque (laranja da marca) */
-  --color-accent: var(--sic-orange);
+  --color-accent: #ff5b1f; /* laranja da marca */
   --color-accent-hover: #ff7a47;
   --color-accent-strong: #c2410c; /* laranja para TEXTO sobre fundo claro (contraste AA) */
-  --color-accent-soft: #ffe9e0;
-  --color-on-accent: var(--sic-ink);
+  --color-accent-soft: #fff1eb;
+  --color-on-accent: #121212;
 
   /* Seções escuras (invertidas) */
-  --color-inverse: var(--sic-ink);
-  --color-inverse-fg: var(--sic-paper);
+  --color-inverse: #121212;
+  --color-inverse-fg: #fafaf8;
   --color-inverse-muted: #b8b8b4;
-  --color-inverse-line: #2a2a28;
 
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -54,7 +46,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-accent-strong);
     outline-offset: 2px;
   }
 

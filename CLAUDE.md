@@ -18,7 +18,7 @@ Institutional website for "Solution in Code" company, hosted at solutionincode.c
 
 - `npm start` — dev server at localhost:4200
 - `npm run build` — production build (outputs to `docs/`, flattens browser subfolder, copies 404.html for SPA routing)
-- `npm test` — run unit tests via Karma
+- `npm test` — run unit tests via Karma (there are no `*.spec.ts` files yet, so it currently fails with TS18003)
 - `npm run watch` — dev build with watch mode
 
 ## Architecture
@@ -59,9 +59,9 @@ Full guide (tokens, logo rules, components, contrast): `DESIGN-SYSTEM.md`. Keep 
 - Light theme: `canvas` (paper #FAFAF8) background, `fg` (ink #121212) text, `accent` (orange #FF5B1F). Dark sections use `bg-inverse` + `text-inverse-fg` / `text-inverse-muted`.
 - Space Grotesk (400/500/700) from Google Fonts is the default `font-sans`.
 - Use only the semantic token classes (`bg-surface`, `text-fg-muted`, `border-line`...). The default Tailwind palette is disabled (`--color-*: initial`), so `text-gray-400`, `text-white`, `bg-violet-600` etc. **silently generate no CSS**.
-- Orange text/icons on light backgrounds = `text-accent-strong` (#C2410C, AA). `text-accent` only on dark backgrounds or in the logo. Buttons on orange use `text-on-accent` (dark), never white.
+- Orange text/icons on light backgrounds = `text-accent-strong` (#C2410C, AA); the global focus outline uses it too. `text-accent` only on dark backgrounds or in the logo. Buttons on orange use `text-on-accent` (dark), never white.
 - Reusable classes in `src/styles.css` (`@layer components`): `btn-primary`, `btn-secondary`, `btn-light`, `card`, `card-interactive`, `link`. In Tailwind v4 `@apply` only accepts utilities, so shared bases use grouped selectors, not `@apply btn`.
-- Logo: `<app-logo variant="full|symbol" tone="default|inverse" />`, sized by font-size (`class="text-sm"`). Brand files (SVG/PNG/app icons) in `public/brand/`; favicon in `public/favicon.svg|ico`.
+- Logo: `<app-logo tone="default|inverse" />` (full logo), sized by font-size (`class="text-sm"`); symbol only: `public/brand/symbol.svg`. Brand files (SVG/PNG/app icons) in `public/brand/`; favicon in `public/favicon.svg|ico`. Regenerate PNGs with the commands in `DESIGN-SYSTEM.md` and open them before committing (a headless render once produced a blank icon).
 
 ## Known Pitfalls
 
