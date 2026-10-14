@@ -10,7 +10,7 @@ Institutional website for "Solution in Code" company, hosted at solutionincode.c
 
 - Angular 19 (standalone components, no NgModule)
 - TypeScript 5.7 with strict mode enabled
-- Tailwind CSS v4 for styling (dark theme)
+- Tailwind CSS v4 for styling, with the Solution in Code design system (tokens in `src/styles.css`, guide in `DESIGN-SYSTEM.md`)
 - Karma + Jasmine for unit tests
 - Deployed to GitHub Pages via the `docs/` folder
 
@@ -36,7 +36,7 @@ Multi-page Angular app with lazy-loaded routes:
 
 ```
 src/app/
-├── shared/components/     # Header, Footer, SectionTitle
+├── shared/components/     # Header, Footer, Logo, SectionTitle
 ├── features/
 │   ├── home/              # Home page
 │   └── products/          # Products, ProductDetail, PrivacyPolicy
@@ -51,5 +51,19 @@ Build output goes to `docs/` for GitHub Pages. The post-build script flattens An
 
 - Component prefix is `app` (configured in `angular.json`)
 - All components are standalone (no NgModule)
-- Dark theme: bg-gray-950 base with violet accent colors
-- Inter font loaded from Google Fonts
+
+## Design System
+
+Full guide (tokens, logo rules, components, contrast): `DESIGN-SYSTEM.md`. Keep it updated when tokens or components change.
+
+- Light theme: `canvas` (paper #FAFAF8) background, `fg` (ink #121212) text, `accent` (orange #FF5B1F). Dark sections use `bg-inverse` + `text-inverse-fg` / `text-inverse-muted`.
+- Space Grotesk (400/500/700) from Google Fonts is the default `font-sans`.
+- Use only the semantic token classes (`bg-surface`, `text-fg-muted`, `border-line`...). The default Tailwind palette is disabled (`--color-*: initial`), so `text-gray-400`, `text-white`, `bg-violet-600` etc. **silently generate no CSS**.
+- Orange text/icons on light backgrounds = `text-accent-strong` (#C2410C, AA). `text-accent` only on dark backgrounds or in the logo. Buttons on orange use `text-on-accent` (dark), never white.
+- Reusable classes in `src/styles.css` (`@layer components`): `btn-primary`, `btn-secondary`, `btn-light`, `card`, `card-interactive`, `link`. In Tailwind v4 `@apply` only accepts utilities, so shared bases use grouped selectors, not `@apply btn`.
+- Logo: `<app-logo variant="full|symbol" tone="default|inverse" />`, sized by font-size (`class="text-sm"`). Brand files (SVG/PNG/app icons) in `public/brand/`; favicon in `public/favicon.svg|ico`.
+
+## Known Pitfalls
+
+- `docs/` is committed build output, so `src/styles.css` excludes it from Tailwind scanning (`@source not "../docs"`). Without it, classes from the old build leak into the CSS.
+- `ng build` prints `rules skipped due to selector errors: & -> Empty sub-selector`. This is expected: Tailwind v4 outputs nested CSS (`&:hover { @media (hover: hover) {...} }`) that the Angular optimizer doesn't flatten; the rules are kept and work in current browsers.

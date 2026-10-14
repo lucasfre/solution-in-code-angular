@@ -1,27 +1,50 @@
-# SolutionInCodeAngular
+# Solution in Code — site
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+Site institucional da **Solution in Code**, publicado em [solutionincode.com.br](https://solutionincode.com.br). Apresenta a empresa, os produtos e as páginas de cada app (detalhes e política de privacidade). Conteúdo em português.
 
-## Development server
+## Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Página inicial com a proposta da empresa
+- Lista de produtos
+- Página do app **Resultados Loteria do Brasil**, com links para as lojas
+- Política de privacidade do app
 
-## Code scaffolding
+## Requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js 20 ou 22 (LTS) e npm
 
-## Build
+## Como rodar
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm ci          # instala as dependências
+npm start       # servidor local em http://localhost:4200
+npm test        # testes unitários (Karma)
+npm run build   # gera o site publicado em docs/
+```
 
-## Running unit tests
+## Publicação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+O GitHub Pages publica a pasta `docs/` da branch `master` no domínio `solutionincode.com.br` (arquivo `public/CNAME`).
 
-## Running end-to-end tests
+1. Rode `npm run build`: ele gera o site em `docs/`, cria o `404.html` e as páginas de cada rota.
+2. Faça commit da pasta `docs/` junto com a mudança.
+3. Com o merge no `master`, o site novo vai ao ar.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Design system
 
-## Further help
+Cores, fonte, logo, componentes e regras de uso da marca: [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md). Os arquivos da marca (logo, símbolo, ícones de app, favicon) ficam em [`public/brand/`](public/brand).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Estrutura
+
+```
+src/
+├── styles.css               # tokens do design system (Tailwind v4)
+├── index.html               # fontes, favicon
+└── app/
+    ├── shared/components/   # Header, Footer, Logo, SectionTitle
+    └── features/            # home/, products/
+public/                      # arquivos copiados para o site (brand/, favicon, CNAME)
+docs/                        # site gerado pelo build (não editar à mão)
+```
+
+Detalhes para quem mantém o código: [`CLAUDE.md`](CLAUDE.md).
