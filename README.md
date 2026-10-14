@@ -4,10 +4,12 @@ Site institucional da **Solution in Code**, publicado em [solutionincode.com.br]
 
 ## Funcionalidades
 
-- Página inicial com a proposta da empresa
+- Página inicial com o app em destaque e os botões das lojas
 - Lista de produtos
-- Página do app **Resultados Loteria do Brasil**, com links para as lojas
-- Política de privacidade do app
+- Página do app **Resultados Loteria do Brasil**: funcionalidades, lojas, YouTube e Facebook
+- Política de privacidade do app, também no rodapé de todas as páginas
+
+Os endereços dos produtos estão cadastrados nas lojas, na Meta e na página do Facebook. **Não mude** `/produtos/resultados-loteria-do-brasil` nem `/produtos/resultados-loteria-do-brasil/privacidade`. Os dados de cada app (nome, resumo, links) ficam em `src/app/features/products/products.ts`.
 
 ## Requisitos
 
@@ -41,7 +43,7 @@ src/
 ├── styles.css               # tokens do design system (Tailwind v4)
 ├── index.html               # fontes, favicon
 └── app/
-    ├── shared/components/   # Header, Footer, Logo, SectionTitle
+    ├── shared/components/   # Header, Footer, Logo, SectionTitle, StoreBadges
     └── features/            # home/, products/
 public/                      # arquivos copiados para o site (brand/, favicon, CNAME)
 docs/                        # site gerado pelo build (não editar à mão)

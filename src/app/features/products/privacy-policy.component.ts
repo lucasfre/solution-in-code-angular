@@ -1,23 +1,31 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { RESULTADOS_LOTERIA } from './products';
 
 @Component({
   selector: 'app-privacy-policy',
   standalone: true,
   imports: [RouterLink],
   template: `
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
       <!-- Breadcrumb -->
-      <nav class="mb-8 text-sm text-fg-muted">
+      <nav class="mb-8 text-sm text-fg-muted" aria-label="Você está em">
         <a routerLink="/produtos" class="hover:text-accent-strong transition-colors">Produtos</a>
         <span class="mx-2">/</span>
-        <a routerLink="/produtos/resultados-loteria-do-brasil" class="hover:text-accent-strong transition-colors">Resultados Loteria do Brasil</a>
+        <a [routerLink]="app.pagina" class="hover:text-accent-strong transition-colors">{{ app.nome }}</a>
         <span class="mx-2">/</span>
         <span class="text-fg">Privacidade</span>
       </nav>
 
-      <div class="card p-8 sm:p-12">
-        <h1 class="text-2xl sm:text-3xl font-bold text-fg mb-8 text-center">Política de Privacidade</h1>
+      <div class="flex items-center gap-4 mb-8">
+        <img [src]="app.icone" alt="" class="w-14 h-14 shrink-0 rounded-xl" />
+        <div>
+          <h1 class="text-3xl sm:text-4xl font-bold text-fg">Política de Privacidade</h1>
+          <p class="text-fg-muted">{{ app.nome }}</p>
+        </div>
+      </div>
+
+      <div class="card p-6 sm:p-10">
 
         <div class="space-y-8 text-fg leading-relaxed">
           <!-- Introdução -->
@@ -185,4 +193,6 @@ import { RouterLink } from '@angular/router';
     </section>
   `,
 })
-export class PrivacyPolicyComponent {}
+export class PrivacyPolicyComponent {
+  app = RESULTADOS_LOTERIA;
+}

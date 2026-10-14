@@ -27,10 +27,12 @@ Identidade visual da Solution in Code aplicada ao site. A fonte da verdade é o 
 <div class="card p-8">Conteúdo</div>
 <a routerLink="/x" class="card-interactive p-8">Cartão clicável</a>
 
+<!-- Botões das lojas (fundo claro) -->
+<app-store-badges [googlePlay]="app.googlePlay" [appStore]="app.appStore" />
+
 <!-- Seção escura -->
 <section class="bg-inverse text-inverse-fg">
   <p class="text-inverse-muted">Texto secundário</p>
-  <a href="..." class="btn-light">Botão sobre fundo escuro</a>
 </section>
 ```
 
@@ -102,7 +104,7 @@ Cada token vira classe do Tailwind com qualquer prefixo de cor: `bg-`, `text-`, 
 |---|---|---|
 | `canvas` | `#FAFAF8` | Fundo da página (`bg-canvas`) |
 | `surface` | `#FFFFFF` | Cartões e blocos (`bg-surface`) |
-| `surface-muted` | `#F2F1EC` | Fundo alternativo, hover de botões claros |
+| `surface-muted` | `#F2F1EC` | Fundo alternativo |
 | `line` | `#E6E4DF` | Bordas e divisórias (`border-line`) |
 | `fg` | `#121212` | Texto principal (`text-fg`) |
 | `fg-muted` | `#5C5C57` | Texto secundário (`text-fg-muted`) |
@@ -149,11 +151,11 @@ Todos estão em [`src/styles.css`](src/styles.css) (`@layer components`), então
 | `<app-logo>` | Logo completo. Entrada `tone` (`default` \| `inverse`). Já tem `role="img"` e `aria-label`. |
 | `.btn-primary` | Botão principal: laranja com texto escuro. Uma ação principal por tela. |
 | `.btn-secondary` | Botão secundário: branco com borda. |
-| `.btn-light` | Botão claro para usar sobre seção escura (ex.: botões das lojas). |
 | `.card` | Bloco branco com borda e cantos arredondados. |
 | `.card-interactive` | `.card` com borda laranja no hover, para cartões clicáveis. |
 | `.link` | Link dentro de texto: laranja forte, sublinha no hover. |
 | `<app-section-title>` | Título + subtítulo de seção, centralizados. |
+| `<app-store-badges>` | Botões escuros do Google Play e da App Store, para fundo claro. Entradas `googlePlay` e `appStore`. |
 
 **Ícones:** SVG inline 24×24, `fill="none"`, `stroke="currentColor"`, `stroke-width="2"`, pontas arredondadas (estilo outline). A cor vem da classe de texto (`text-accent-strong`, `text-fg-muted`...).
 
