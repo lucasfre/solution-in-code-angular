@@ -8,22 +8,22 @@ import { RouterLink } from '@angular/router';
   template: `
     <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <!-- Breadcrumb -->
-      <nav class="mb-8 text-sm text-gray-500">
-        <a routerLink="/produtos" class="hover:text-violet-400 transition-colors">Produtos</a>
+      <nav class="mb-8 text-sm text-fg-muted">
+        <a routerLink="/produtos" class="hover:text-accent-strong transition-colors">Produtos</a>
         <span class="mx-2">/</span>
-        <a routerLink="/produtos/resultados-loteria-do-brasil" class="hover:text-violet-400 transition-colors">Resultados Loteria do Brasil</a>
+        <a routerLink="/produtos/resultados-loteria-do-brasil" class="hover:text-accent-strong transition-colors">Resultados Loteria do Brasil</a>
         <span class="mx-2">/</span>
-        <span class="text-gray-300">Privacidade</span>
+        <span class="text-fg">Privacidade</span>
       </nav>
 
-      <div class="bg-gray-900 border border-gray-800 rounded-xl p-8 sm:p-12">
-        <h1 class="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Política de Privacidade</h1>
+      <div class="card p-8 sm:p-12">
+        <h1 class="text-2xl sm:text-3xl font-bold text-fg mb-8 text-center">Política de Privacidade</h1>
 
-        <div class="space-y-8 text-gray-300 leading-relaxed">
+        <div class="space-y-8 text-fg leading-relaxed">
           <!-- Introdução -->
           <div>
             <p class="mb-3">
-              <strong class="text-white">Solution in Code</strong> desenvolveu o aplicativo Resultados Loteria do Brasil
+              <strong class="font-bold">Solution in Code</strong> desenvolveu o aplicativo Resultados Loteria do Brasil
               como um aplicativo gratuito. Este aplicativo é fornecido pela Solution in Code sem nenhum custo. Mas tem a
               opção de compras dentro do aplicativo que permite remover os anúncios.
             </p>
@@ -45,11 +45,11 @@ import { RouterLink } from '@angular/router';
 
           <!-- Coleta e uso de informações -->
           <div>
-            <h2 class="text-lg font-semibold text-white mb-3">Coleta e uso de informações</h2>
-            <p class="mb-3 font-semibold text-amber-300/90">
+            <h2 class="text-lg font-bold text-fg mb-3">Coleta e uso de informações</h2>
+            <p class="mb-3 font-medium bg-accent-soft rounded-lg p-4">
               Este aplicativo não é afiliado a nenhuma entidade governamental e não representa o governo do Brasil. As
               informações fornecidas são baseadas em fontes públicas e oficiais
-              (site oficial da <a target="_blank" href="https://caixa.gov.br/" class="text-violet-400 hover:underline">CAIXA</a>).
+              (site oficial da <a target="_blank" href="https://caixa.gov.br/" class="link">CAIXA</a>).
             </p>
             <p class="mb-3">
               Para uma melhor experiência, ao usar nosso Serviço, podemos exigir que você nos forneça certas informações
@@ -64,26 +64,26 @@ import { RouterLink } from '@angular/router';
             </p>
             <ul class="space-y-2 ml-4">
               <li>
-                <a target="_blank" href="https://caixa.gov.br/" class="text-violet-400 hover:underline">Caixa do Brasil</a>
+                <a target="_blank" href="https://caixa.gov.br/" class="link">Caixa do Brasil</a>
               </li>
               <li>
-                <a target="_blank" href="https://policies.google.com/privacy" class="text-violet-400 hover:underline">Google Play Services</a>
+                <a target="_blank" href="https://policies.google.com/privacy" class="link">Google Play Services</a>
               </li>
               <li>
-                <a target="_blank" href="https://support.google.com/admob/answer/6128543?hl=pt" class="text-violet-400 hover:underline">AdMob</a>
+                <a target="_blank" href="https://support.google.com/admob/answer/6128543?hl=pt" class="link">AdMob</a>
               </li>
               <li>
-                <a target="_blank" href="https://firebase.google.com/policies/analytics" class="text-violet-400 hover:underline">Google Analytics for Firebase</a>
+                <a target="_blank" href="https://firebase.google.com/policies/analytics" class="link">Google Analytics for Firebase</a>
               </li>
               <li>
-                <a target="_blank" href="https://firebase.google.com/support/privacy/" class="text-violet-400 hover:underline">Firebase Crashlytics</a>
+                <a target="_blank" href="https://firebase.google.com/support/privacy/" class="link">Firebase Crashlytics</a>
               </li>
             </ul>
           </div>
 
           <!-- Dados de log -->
           <div>
-            <h2 class="text-lg font-semibold text-white mb-3">Dados de log</h2>
+            <h2 class="text-lg font-bold text-fg mb-3">Dados de log</h2>
             <p>
               Queremos informar que sempre que você utiliza o nosso Serviço, em caso de erro no aplicativo, coletamos
               dados e informações (por meio de produtos de terceiros) no seu telefone chamados Log Data. Esses dados de
@@ -95,7 +95,7 @@ import { RouterLink } from '@angular/router';
 
           <!-- Cookies -->
           <div>
-            <h2 class="text-lg font-semibold text-white mb-3">Cookies</h2>
+            <h2 class="text-lg font-bold text-fg mb-3">Cookies</h2>
             <p class="mb-3">
               Cookies são arquivos com uma pequena quantidade de dados que são comumente usados como identificadores
               exclusivos anônimos. Eles são enviados para o seu navegador a partir dos sites que você visita e são
@@ -111,7 +111,7 @@ import { RouterLink } from '@angular/router';
 
           <!-- Provedores de serviço -->
           <div>
-            <h2 class="text-lg font-semibold text-white mb-3">Provedores de serviço</h2>
+            <h2 class="text-lg font-bold text-fg mb-3">Provedores de serviço</h2>
             <p class="mb-3">Podemos empregar empresas terceirizadas e indivíduos pelos seguintes motivos:</p>
             <ul class="list-disc ml-6 space-y-1 mb-3">
               <li>Para facilitar nosso serviço;</li>
@@ -128,7 +128,7 @@ import { RouterLink } from '@angular/router';
 
           <!-- Segurança -->
           <div>
-            <h2 class="text-lg font-semibold text-white mb-3">Segurança</h2>
+            <h2 class="text-lg font-bold text-fg mb-3">Segurança</h2>
             <p>
               Valorizamos sua confiança em nos fornecer suas informações pessoais, portanto, estamos nos empenhando para
               usar meios comercialmente aceitáveis de protegê-las. Mas lembre-se que nenhum método de transmissão pela
@@ -139,7 +139,7 @@ import { RouterLink } from '@angular/router';
 
           <!-- Links para outros sites -->
           <div>
-            <h2 class="text-lg font-semibold text-white mb-3">Links para outros sites</h2>
+            <h2 class="text-lg font-bold text-fg mb-3">Links para outros sites</h2>
             <p>
               Este serviço pode conter links para outros sites. Se você clicar em um link de terceiros, você será
               direcionado a esse site. Observe que esses sites externos não são operados por nós. Portanto, recomendamos
@@ -151,7 +151,7 @@ import { RouterLink } from '@angular/router';
 
           <!-- Privacidade das crianças -->
           <div>
-            <h2 class="text-lg font-semibold text-white mb-3">Privacidade das crianças</h2>
+            <h2 class="text-lg font-bold text-fg mb-3">Privacidade das crianças</h2>
             <p class="mb-3">
               Estes Serviços não se dirigem a ninguém com idade inferior a 13 anos. Não recolhemos intencionalmente
               informações de identificação pessoal de crianças com menos de 13 anos. No caso de descobrirmos que uma
@@ -163,7 +163,7 @@ import { RouterLink } from '@angular/router';
 
           <!-- Mudanças -->
           <div>
-            <h2 class="text-lg font-semibold text-white mb-3">Mudanças nesta Política de Privacidade</h2>
+            <h2 class="text-lg font-bold text-fg mb-3">Mudanças nesta Política de Privacidade</h2>
             <p class="mb-3">
               Podemos atualizar nossa Política de Privacidade de tempos em tempos. Portanto, é aconselhável revisar esta
               página periodicamente para quaisquer alterações. Iremos notificá-lo de quaisquer alterações, publicando a
@@ -174,10 +174,10 @@ import { RouterLink } from '@angular/router';
 
           <!-- Contato -->
           <div>
-            <h2 class="text-lg font-semibold text-white mb-3">Contate-Nos</h2>
+            <h2 class="text-lg font-bold text-fg mb-3">Contate-Nos</h2>
             <p>
               Se você tiver dúvidas ou sugestões sobre nossa Política de Privacidade, não hesite em nos contatar em
-              <a href="mailto:suporte@solutionincode.com" class="text-violet-400 hover:underline font-semibold">suporte&#64;solutionincode.com</a>
+              <a href="mailto:suporte@solutionincode.com" class="link font-bold">suporte&#64;solutionincode.com</a>
             </p>
           </div>
         </div>
