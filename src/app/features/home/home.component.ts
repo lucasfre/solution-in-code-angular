@@ -12,7 +12,7 @@ import { RESULTADOS_LOTERIA } from '../products/products';
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-20">
       <p class="text-sm font-bold uppercase tracking-wider text-accent-strong mb-4">Sistemas · Apps · Ferramentas</p>
       <h1 class="max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-bold text-fg mb-6">
-        Soluções em código, construídas com <span class="text-accent-strong">IA e agentes</span>.
+        Código que <span class="text-accent-strong">resolve</span>
       </h1>
       <p class="max-w-2xl text-lg sm:text-xl text-fg-muted mb-10">
         A Solution in Code une a visão de desenvolvedores especialistas, com mais de 11 anos de mercado, à
