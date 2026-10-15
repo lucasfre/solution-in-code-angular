@@ -15,8 +15,9 @@ import { RESULTADOS_LOTERIA } from '../products/products';
         Soluções em código, construídas com <span class="text-accent-strong">IA e agentes</span>.
       </h1>
       <p class="max-w-2xl text-lg sm:text-xl text-fg-muted mb-10">
-        A Solution in Code é uma empresa brasileira de tecnologia. Criamos sistemas pessoais e empresariais, apps e
-        ferramentas, com agentes de IA trabalhando em cada etapa para entregar mais rápido e com qualidade.
+        A Solution in Code une a visão de desenvolvedores especialistas, com mais de 11 anos de mercado, à
+        produtividade da IA. Criamos sistemas pessoais e empresariais, apps e ferramentas com mais desempenho e
+        qualidade.
       </p>
       <a routerLink="/produtos" class="btn-primary px-8">
         Conheça nossos produtos
@@ -49,10 +50,11 @@ import { RESULTADOS_LOTERIA } from '../products/products';
     <section class="bg-inverse border-y border-line">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
         <p class="text-sm font-bold uppercase tracking-wider text-accent mb-4">Como trabalhamos</p>
-        <h2 class="text-3xl sm:text-4xl font-bold text-inverse-fg mb-4">Desenvolvimento com IA e agentes</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold text-inverse-fg mb-4">Experiência de especialista, velocidade de IA</h2>
         <p class="text-lg text-inverse-muted mb-12 max-w-3xl">
-          Agentes de IA trabalham junto com a gente do começo ao fim: aceleram o que é repetitivo e deixam mais tempo
-          para o que importa. As decisões e a revisão final continuam com a gente.
+          São mais de 11 anos construindo software. Hoje, agentes de IA trabalham ao nosso lado em cada etapa: aceleram
+          o que é repetitivo e aumentam a produtividade. As decisões de arquitetura, a qualidade e a revisão final
+          continuam com quem tem experiência.
         </p>
         <div class="grid md:grid-cols-3 gap-10">
           @for (etapa of etapas; track etapa.titulo) {
