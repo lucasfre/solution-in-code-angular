@@ -1,108 +1,115 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { StoreBadgesComponent } from '../../shared/components/store-badges/store-badges.component';
+import { RESULTADOS_LOTERIA } from './products';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, StoreBadgesComponent],
   template: `
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
       <!-- Breadcrumb -->
-      <nav class="mb-8 text-sm text-gray-500">
-        <a routerLink="/produtos" class="hover:text-violet-400 transition-colors">Produtos</a>
+      <nav class="mb-8 text-sm text-fg-muted" aria-label="Você está em">
+        <a routerLink="/produtos" class="hover:text-accent-strong transition-colors">Produtos</a>
         <span class="mx-2">/</span>
-        <span class="text-gray-300">Resultados Loteria do Brasil</span>
+        <span class="text-fg">{{ app.nome }}</span>
       </nav>
 
-      <div class="bg-gray-900 border border-gray-800 rounded-xl p-8 sm:p-12">
-        <!-- Header -->
-        <div class="flex items-start gap-6 mb-8">
-          <img src="assets/products/resultados-loteria-do-brasil.png"
-               alt="Resultados Loteria do Brasil"
-               class="w-16 h-16 shrink-0 rounded-2xl" />
-          <div>
-            <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">Resultados Loteria do Brasil</h1>
-            <p class="text-gray-400">Aplicativo gratuito para Android e iOS</p>
+      <!-- Cabeçalho -->
+      <div class="flex flex-col sm:flex-row sm:items-center gap-6 mb-8">
+        <img [src]="app.icone" alt="" class="w-20 h-20 shrink-0 rounded-2xl" />
+        <div>
+          <h1 class="text-3xl sm:text-4xl font-bold text-fg mb-2">{{ app.nome }}</h1>
+          <p class="text-fg-muted">Grátis para Android e iOS</p>
+        </div>
+      </div>
+      <p class="text-lg text-fg-muted mb-8 max-w-2xl">{{ app.resumo }}</p>
+      <app-store-badges [googlePlay]="app.googlePlay" [appStore]="app.appStore" class="mb-16" />
+
+      <!-- Funcionalidades -->
+      <h2 class="text-2xl font-bold text-fg mb-6">O que o app faz</h2>
+      <div class="grid sm:grid-cols-2 gap-4 mb-12">
+        @for (item of funcionalidades; track item.titulo) {
+          <div class="card p-6">
+            <h3 class="font-bold text-fg mb-2">{{ item.titulo }}</h3>
+            <p class="text-sm text-fg-muted leading-relaxed">{{ item.texto }}</p>
           </div>
-        </div>
+        }
+      </div>
 
-        <!-- Descrição -->
-        <div class="mb-8">
-          <h2 class="text-lg font-semibold text-white mb-3">Sobre o aplicativo</h2>
-          <p class="text-gray-400 leading-relaxed mb-4">
-            O Resultados Loteria do Brasil permite que você acompanhe os resultados de todas as loterias da Caixa
-            Econômica Federal de forma rápida, prática e gratuita. O aplicativo não é afiliado a nenhuma entidade
-            governamental e não representa o governo do Brasil.
-          </p>
-          <p class="text-gray-400 leading-relaxed">
-            As informações são baseadas em fontes públicas e oficiais do site da CAIXA.
-          </p>
-        </div>
+      <!-- Aviso -->
+      <p class="bg-accent-soft rounded-xl p-5 text-sm text-fg leading-relaxed mb-12">
+        Este aplicativo não é afiliado a nenhuma entidade governamental e não representa o governo do Brasil. Os
+        resultados vêm de fontes públicas e oficiais, como o site da
+        <a href="https://caixa.gov.br/" target="_blank" rel="noopener noreferrer" class="link">CAIXA</a>.
+      </p>
 
-        <!-- Features -->
-        <div class="mb-8">
-          <h2 class="text-lg font-semibold text-white mb-4">Funcionalidades</h2>
-          <ul class="space-y-3">
-            @for (feature of features; track feature) {
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-emerald-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="text-gray-300">{{ feature }}</span>
-              </li>
-            }
-          </ul>
-        </div>
+      <!-- Redes -->
+      <h2 class="text-2xl font-bold text-fg mb-2">Resultados também em vídeo</h2>
+      <p class="text-fg-muted mb-6">Acompanhe os sorteios no YouTube, no Facebook e no Instagram.</p>
+      <div class="flex flex-wrap gap-3 mb-12">
+        <a [href]="app.youtube" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+          </svg>
+          YouTube
+        </a>
+        <a [href]="app.facebook" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/>
+          </svg>
+          Facebook
+        </a>
+        <a [href]="app.instagram" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
+          Instagram
+        </a>
+      </div>
 
-        <!-- CTA Download -->
-        <div class="mb-8 bg-gradient-to-r from-violet-600/10 to-emerald-600/10 border border-violet-500/20 rounded-xl p-6 sm:p-8 text-center">
-          <h2 class="text-xl font-bold text-white mb-2">Baixe agora gratuitamente</h2>
-          <p class="text-gray-400 mb-6 text-sm">Disponível para Android e iOS</p>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://play.google.com/store/apps/details?id=com.solutionincode.resultadosloteriadobrasil"
-               target="_blank" rel="noopener noreferrer"
-               class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium px-6 py-3.5 rounded-xl transition-all hover:scale-105">
-              <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.593-2.302 2.593-2.302zM5.864 2.658L16.8 8.99l-2.302 2.302-8.635-8.635z"/>
-              </svg>
-              <span class="text-left leading-tight">
-                <span class="block text-[10px] uppercase tracking-wider text-gray-400">Disponível no</span>
-                <span class="block text-base font-semibold">Google Play</span>
-              </span>
-            </a>
-            <a href="https://apps.apple.com/br/app/resultados-loteria-do-brasil/id1548330205"
-               target="_blank" rel="noopener noreferrer"
-               class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/15 border border-white/10 text-white font-medium px-6 py-3.5 rounded-xl transition-all hover:scale-105">
-              <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-              </svg>
-              <span class="text-left leading-tight">
-                <span class="block text-[10px] uppercase tracking-wider text-gray-400">Baixe na</span>
-                <span class="block text-base font-semibold">App Store</span>
-              </span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Links -->
-        <div class="flex flex-wrap gap-4">
-          <a routerLink="/produtos/resultados-loteria-do-brasil/privacidade"
-             class="inline-flex items-center gap-2 border border-gray-700 hover:border-violet-500/50 text-gray-300 hover:text-white font-medium px-6 py-3 rounded-lg transition-colors">
-            Política de Privacidade
-          </a>
-        </div>
+      <!-- Privacidade e suporte -->
+      <div class="border-t border-line pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <a [routerLink]="app.privacidade" class="btn-secondary self-start">Política de privacidade</a>
+        <p class="text-sm text-fg-muted">
+          Dúvidas ou sugestões:
+          <a href="mailto:suporte@solutionincode.com" class="link">suporte&#64;solutionincode.com</a>
+        </p>
       </div>
     </section>
   `,
 })
 export class ProductDetailComponent {
-  features = [
-    'Resultados atualizados de todas as loterias da Caixa',
-    'Interface simples e intuitiva',
-    'Notificações de novos resultados',
-    'Histórico de resultados anteriores',
-    'Aplicativo leve e rápido',
-    'Disponível para Android e iOS',
-    'Opção de remover anúncios via compra no app',
+  app = RESULTADOS_LOTERIA;
+
+  funcionalidades = [
+    {
+      titulo: 'Todas as loterias da Caixa',
+      texto:
+        'Mega-Sena, Lotofácil, Quina, Lotomania, Timemania, Dupla Sena, Dia de Sorte, Super Sete, +Milionária, Loteca e Federal, com a premiação de cada faixa e as cidades dos ganhadores.',
+    },
+    {
+      titulo: 'Meus jogos',
+      texto: 'Salve suas apostas e o app confere sozinho a cada concurso, destacando os números que você acertou.',
+    },
+    {
+      titulo: 'Aviso de resultado',
+      texto: 'Receba uma notificação quando sair o resultado. Você escolhe de quais loterias quer ser avisado.',
+    },
+    {
+      titulo: 'Concursos anteriores e próximos',
+      texto: 'Navegue pelos concursos anteriores, busque pelo número e veja a data e o prêmio estimado do próximo.',
+    },
+    {
+      titulo: 'Sem anúncios',
+      texto: 'Planos mensal, anual ou vitalício para usar sem anúncios e consultar os resultados mesmo sem internet.',
+    },
+    {
+      titulo: 'Seus dados, sua escolha',
+      texto: 'Apague seus dados quando quiser, direto nas configurações do app.',
+    },
   ];
 }

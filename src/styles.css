@@ -1,1 +1,86 @@
 @import "tailwindcss";
+
+/* docs/ é o build publicado no GitHub Pages: não deve gerar classes. */
+@source not "../docs";
+
+/*
+ * Design system da Solution in Code — documentação completa em DESIGN-SYSTEM.md.
+ *
+ * Só existem as cores abaixo: a paleta padrão do Tailwind está desligada
+ * (`--color-*: initial`), então `bg-gray-900`, `text-violet-400` etc. NÃO geram CSS.
+ * Use sempre os tokens semânticos (bg-canvas, text-fg, text-accent-strong...).
+ */
+
+@theme {
+  --color-*: initial;
+
+  /* Superfícies (fundo claro) */
+  --color-canvas: #fafaf8; /* paper */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f2f1ec;
+  --color-line: #e6e4df;
+
+  /* Texto sobre fundo claro */
+  --color-fg: #121212; /* ink */
+  --color-fg-muted: #5c5c57;
+
+  /* Destaque (laranja da marca) */
+  --color-accent: #ff5b1f; /* laranja da marca */
+  --color-accent-hover: #ff7a47;
+  --color-accent-strong: #c2410c; /* laranja para TEXTO sobre fundo claro (contraste AA) */
+  --color-accent-soft: #fff1eb;
+  --color-on-accent: #121212;
+
+  /* Seções escuras (invertidas) */
+  --color-inverse: #121212;
+  --color-inverse-fg: #fafaf8;
+  --color-inverse-muted: #b8b8b4;
+
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-strong);
+    outline-offset: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-on-accent hover:bg-accent-hover;
+  }
+
+  .btn-secondary {
+    @apply border border-line bg-surface text-fg hover:border-fg;
+  }
+
+  .card,
+  .card-interactive {
+    @apply rounded-xl border border-line bg-surface;
+  }
+
+  .card-interactive {
+    @apply transition-colors hover:border-accent;
+  }
+
+  .link {
+    @apply font-medium text-accent-strong underline-offset-4 hover:underline;
+  }
+}

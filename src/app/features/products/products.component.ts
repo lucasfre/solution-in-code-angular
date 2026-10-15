@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
+import { RESULTADOS_LOTERIA } from './products';
 
 @Component({
   selector: 'app-products',
@@ -9,30 +10,26 @@ import { SectionTitleComponent } from '../../shared/components/section-title/sec
   template: `
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <app-section-title
-        title="Nossos Produtos"
-        subtitle="Aplicativos desenvolvidos com dedicação para facilitar a vida dos brasileiros."
+        title="Nossos apps"
+        subtitle="Aplicativos criados e mantidos pela Solution in Code, disponíveis para Android e iOS."
       />
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <a routerLink="/produtos/resultados-loteria-do-brasil"
-           class="group bg-gray-900 border border-gray-800 rounded-xl p-8 hover:border-violet-500/50 transition-colors">
-          <img src="assets/products/resultados-loteria-do-brasil.png"
-               alt="Resultados Loteria do Brasil"
-               class="w-14 h-14 mb-5 rounded-xl" />
-          <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-violet-400 transition-colors">
-            Resultados Loteria do Brasil
+        <div class="card p-8 flex flex-col">
+          <img [src]="app.icone" alt="" class="w-14 h-14 mb-5 rounded-xl" />
+          <h3 class="text-xl font-bold text-fg mb-1">
+            <a [routerLink]="app.pagina" class="hover:text-accent-strong transition-colors">{{ app.nome }}</a>
           </h3>
-          <p class="text-sm text-gray-400 mb-4">
-            Acompanhe os resultados de todas as loterias da Caixa de forma rápida e prática.
-          </p>
-          <span class="text-sm text-violet-400 font-medium inline-flex items-center gap-1">
-            Ver detalhes
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </span>
-        </a>
+          <p class="text-sm text-fg-muted mb-4">Android e iOS · Grátis</p>
+          <p class="text-fg-muted mb-6 flex-1">{{ app.resumo }}</p>
+          <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <a [routerLink]="app.pagina" class="link">Ver detalhes</a>
+            <a [routerLink]="app.privacidade" class="link">Política de privacidade</a>
+          </div>
+        </div>
       </div>
     </section>
   `,
 })
-export class ProductsComponent {}
+export class ProductsComponent {
+  app = RESULTADOS_LOTERIA;
+}

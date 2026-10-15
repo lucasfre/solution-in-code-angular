@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, LogoComponent],
   template: `
-    <header class="border-b border-gray-800 bg-gray-950/80 backdrop-blur-sm sticky top-0 z-50">
+    <header class="border-b border-line bg-canvas/85 backdrop-blur-sm sticky top-0 z-50">
       <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a routerLink="/" class="text-xl font-bold tracking-tight text-white hover:text-violet-400 transition-colors">
-          Solution in Code
+        <a routerLink="/" class="rounded-md hover:opacity-80 transition-opacity" aria-label="Solution in Code — Início">
+          <app-logo class="text-sm" />
         </a>
 
         <button
           (click)="menuOpen = !menuOpen"
-          class="sm:hidden p-2 text-gray-400 hover:text-white transition-colors"
+          class="sm:hidden p-2 text-fg-muted hover:text-fg transition-colors"
           [attr.aria-expanded]="menuOpen"
           aria-label="Menu"
         >
@@ -29,14 +30,14 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
         <ul class="hidden sm:flex items-center gap-8">
           <li>
-            <a routerLink="/" routerLinkActive="text-violet-400" [routerLinkActiveOptions]="{ exact: true }"
-               class="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+            <a routerLink="/" routerLinkActive="text-accent-strong!" [routerLinkActiveOptions]="{ exact: true }"
+               class="text-sm font-medium text-fg-muted hover:text-fg transition-colors">
               Início
             </a>
           </li>
           <li>
-            <a routerLink="/produtos" routerLinkActive="text-violet-400"
-               class="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+            <a routerLink="/produtos" routerLinkActive="text-accent-strong!"
+               class="text-sm font-medium text-fg-muted hover:text-fg transition-colors">
               Produtos
             </a>
           </li>
@@ -44,18 +45,18 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       </nav>
 
       @if (menuOpen) {
-        <ul class="sm:hidden border-t border-gray-800 px-4 py-4 space-y-3">
+        <ul class="sm:hidden border-t border-line px-4 py-4 space-y-3">
           <li>
             <a routerLink="/" (click)="menuOpen = false"
-               routerLinkActive="text-violet-400" [routerLinkActiveOptions]="{ exact: true }"
-               class="block text-sm font-medium text-gray-300 hover:text-white transition-colors">
+               routerLinkActive="text-accent-strong!" [routerLinkActiveOptions]="{ exact: true }"
+               class="block text-sm font-medium text-fg-muted hover:text-fg transition-colors">
               Início
             </a>
           </li>
           <li>
             <a routerLink="/produtos" (click)="menuOpen = false"
-               routerLinkActive="text-violet-400"
-               class="block text-sm font-medium text-gray-300 hover:text-white transition-colors">
+               routerLinkActive="text-accent-strong!"
+               class="block text-sm font-medium text-fg-muted hover:text-fg transition-colors">
               Produtos
             </a>
           </li>

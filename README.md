@@ -1,27 +1,52 @@
-# SolutionInCodeAngular
+# Solution in Code — site
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+Site institucional da **Solution in Code**, publicado em [solutionincode.com.br](https://solutionincode.com.br). Apresenta a empresa, os produtos e as páginas de cada app (detalhes e política de privacidade). Conteúdo em português.
 
-## Development server
+## Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Página inicial com o app em destaque e os botões das lojas
+- Lista de produtos
+- Página do app **Resultados Loteria do Brasil**: funcionalidades, lojas, YouTube, Facebook e Instagram
+- Política de privacidade do app (mesmo texto da tela do app), também no rodapé de todas as páginas
 
-## Code scaffolding
+Os endereços dos produtos estão cadastrados nas lojas, na Meta e na página do Facebook. **Não mude** `/produtos/resultados-loteria-do-brasil` nem `/produtos/resultados-loteria-do-brasil/privacidade`. Os dados de cada app (nome, resumo, links) ficam em `src/app/features/products/products.ts`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Requisitos
 
-## Build
+- Node.js 20 ou 22 (LTS) e npm
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Como rodar
 
-## Running unit tests
+```bash
+npm ci          # instala as dependências
+npm start       # servidor local em http://localhost:4200
+npm test        # Karma: ainda não há testes, falha com TS18003 até existir o primeiro *.spec.ts
+npm run build   # gera o site publicado em docs/
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Publicação
 
-## Running end-to-end tests
+O GitHub Pages publica a pasta `docs/` da branch `master` no domínio `solutionincode.com.br` (arquivo `public/CNAME`).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Rode `npm run build`: ele gera o site em `docs/`, cria o `404.html` e as páginas de cada rota.
+2. Faça commit da pasta `docs/` junto com a mudança.
+3. Com o merge no `master`, o site novo vai ao ar.
 
-## Further help
+## Design system
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Cores, fonte, logo, componentes e regras de uso da marca: [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md). Os arquivos da marca (logo, símbolo, ícones de app, favicon) ficam em [`public/brand/`](public/brand).
+
+## Estrutura
+
+```
+src/
+├── styles.css               # tokens do design system (Tailwind v4)
+├── index.html               # fontes, favicon
+└── app/
+    ├── shared/components/   # Header, Footer, Logo, SectionTitle, StoreBadges
+    └── features/            # home/, products/
+public/                      # arquivos copiados para o site (brand/, favicon, CNAME)
+docs/                        # site gerado pelo build (não editar à mão)
+```
+
+Detalhes para quem mantém o código: [`CLAUDE.md`](CLAUDE.md).
