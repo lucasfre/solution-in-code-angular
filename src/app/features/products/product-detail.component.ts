@@ -76,7 +76,7 @@ import { RESULTADOS_LOTERIA } from './products';
         <a [routerLink]="app.privacidade" class="btn-secondary self-start">Política de privacidade</a>
         <p class="text-sm text-fg-muted">
           Dúvidas ou sugestões:
-          <a href="mailto:suporte@solutionincode.com" class="link">suporte&#64;solutionincode.com</a>
+          <a href="mailto:suporte@solutionincode.com.br" class="link">suporte&#64;solutionincode.com.br</a>
         </p>
       </div>
     </section>

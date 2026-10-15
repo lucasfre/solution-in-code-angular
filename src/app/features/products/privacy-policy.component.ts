@@ -137,7 +137,7 @@ import { RESULTADOS_LOTERIA } from './products';
           <h2 class="text-lg font-bold mb-3">Contate-Nos</h2>
           <p>
             Se você tiver dúvidas ou sugestões sobre nossa Política de Privacidade, não hesite em nos contatar em
-            <a href="mailto:suporte@solutionincode.com" class="link font-bold">suporte&#64;solutionincode.com</a>
+            <a href="mailto:suporte@solutionincode.com.br" class="link font-bold">suporte&#64;solutionincode.com.br</a>
           </p>
         </div>
       </div>

@@ -17,8 +17,8 @@ import { LogoComponent } from '../logo/logo.component';
             <a [routerLink]="app.privacidade" class="text-inverse-fg hover:text-accent transition-colors">
               Política de privacidade · {{ app.nome }}
             </a>
-            <a href="mailto:suporte@solutionincode.com" class="text-inverse-fg hover:text-accent transition-colors">
-              suporte&#64;solutionincode.com
+            <a href="mailto:suporte@solutionincode.com.br" class="text-inverse-fg hover:text-accent transition-colors">
+              suporte&#64;solutionincode.com.br
             </a>
           </nav>
         </div>
