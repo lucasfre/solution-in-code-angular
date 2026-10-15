@@ -10,8 +10,8 @@ import { RESULTADOS_LOTERIA } from './products';
   template: `
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <app-section-title
-        title="Nossos apps"
-        subtitle="Aplicativos criados e mantidos pela Solution in Code, disponíveis para Android e iOS."
+        title="Nossos produtos"
+        subtitle="Feitos e mantidos pela Solution in Code."
       />
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="card p-8 flex flex-col">

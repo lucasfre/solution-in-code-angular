@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    title: 'Solution in Code — Apps para Android e iOS',
+    title: 'Solution in Code — Sistemas, apps e ferramentas com IA',
     loadComponent: () =>
       import('./features/home/home.component').then((m) => m.HomeComponent),
   },

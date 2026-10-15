@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Institutional website for "Solution in Code" company, hosted at solutionincode.com.br via GitHub Pages. Features a home page, products listing, product detail for "Resultados Loteria do Brasil" app, and its privacy policy. Content is in Portuguese (pt-BR).
+Institutional website for "Solution in Code" company, hosted at solutionincode.com.br via GitHub Pages. The company is positioned as software development (personal and business systems, apps, tools/automations) built with AI and agents; copy must stay generic, not app-only, and only claim what the company really does. Features a home page, products listing, product detail for "Resultados Loteria do Brasil" app, and its privacy policy. Content is in Portuguese (pt-BR).
 
 ## Tech Stack
 
