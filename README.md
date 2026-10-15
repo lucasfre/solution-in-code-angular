@@ -1,10 +1,10 @@
 # Solution in Code — site
 
-Site institucional da **Solution in Code**, publicado em [solutionincode.com.br](https://solutionincode.com.br). Apresenta a empresa, os produtos e as páginas de cada app (detalhes e política de privacidade). Conteúdo em português.
+Site institucional da **Solution in Code**, publicado em [solutionincode.com.br](https://solutionincode.com.br). Apresenta a empresa (desenvolvimento de sistemas pessoais e empresariais, apps e ferramentas com IA e agentes), os produtos e as páginas de cada app (detalhes e política de privacidade). Conteúdo em português.
 
 ## Funcionalidades
 
-- Página inicial com o app em destaque e os botões das lojas
+- Página inicial: o que a empresa faz, como trabalha com IA e agentes, e os produtos (com os botões das lojas)
 - Lista de produtos
 - Página do app **Resultados Loteria do Brasil**: funcionalidades, lojas, YouTube, Facebook e Instagram
 - Política de privacidade do app (mesmo texto da tela do app), também no rodapé de todas as páginas
