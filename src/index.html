@@ -7,6 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Solution in Code: desenvolvimento de sistemas pessoais e empresariais, apps e ferramentas com IA e agentes.">
   <meta name="theme-color" content="#fafaf8">
+  <script>
+    // Tema antes da primeira pintura (sem piscar): escolha salva ou tema do sistema. O header troca depois.
+    (function () {
+      var tema = null;
+      try { tema = localStorage.getItem('theme'); } catch (e) {}
+      if (tema !== 'dark' && tema !== 'light') {
+        tema = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.dataset.theme = tema;
+      document.querySelector('meta[name="theme-color"]').content = tema === 'dark' ? '#121212' : '#fafaf8';
+    })();
+  </script>
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">

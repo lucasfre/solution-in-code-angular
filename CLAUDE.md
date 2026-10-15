@@ -56,10 +56,11 @@ Build output goes to `docs/` for GitHub Pages. The post-build script flattens An
 
 Full guide (tokens, logo rules, components, contrast): `DESIGN-SYSTEM.md`. Keep it updated when tokens or components change.
 
-- Light theme: `canvas` (paper #FAFAF8) background, `fg` (ink #121212) text, `accent` (orange #FF5B1F). Dark sections use `bg-inverse` + `text-inverse-fg` / `text-inverse-muted`.
+- Light and dark mode: `<html data-theme="light|dark">`, set before first paint by an inline script in `src/index.html` (saved choice in `localStorage['theme']`, else the system preference); the sun/moon button in the header toggles and saves it. Dark values override the tokens in `:root[data-theme="dark"]` (`src/styles.css`). Never use Tailwind's `dark:` variant: components only use tokens. New color tokens need a light value (`@theme`) and a dark value. Check every change in both themes.
+- Light theme: `canvas` (paper #FAFAF8) background, `fg` (ink #121212) text, `accent` (orange #FF5B1F). Dark sections use `bg-inverse` + `text-inverse-fg` / `text-inverse-muted` and stay dark in both themes (in dark mode give them a `border-line` edge).
 - Space Grotesk (400/500/700) from Google Fonts is the default `font-sans`.
 - Use only the semantic token classes (`bg-surface`, `text-fg-muted`, `border-line`...). The default Tailwind palette is disabled (`--color-*: initial`), so `text-gray-400`, `text-white`, `bg-violet-600` etc. **silently generate no CSS**.
-- Orange text/icons on light backgrounds = `text-accent-strong` (#C2410C, AA); the global focus outline uses it too. `text-accent` only on dark backgrounds or in the logo. Buttons on orange use `text-on-accent` (dark), never white.
+- Orange text/icons on the page background = `text-accent-strong` (#C2410C light / #FF7A47 dark, AA in both); the global focus outline uses it too. `text-accent` only inside `bg-inverse` sections or in the logo. Buttons on orange use `text-on-accent` (dark), never white.
 - Reusable classes in `src/styles.css` (`@layer components`): `btn-primary`, `btn-secondary`, `card`, `card-interactive`, `link`. Store download buttons: `<app-store-badges>`. In Tailwind v4 `@apply` only accepts utilities, so shared bases use grouped selectors, not `@apply btn`.
 - Logo: `<app-logo tone="default|inverse" />` (full logo), sized by font-size (`class="text-sm"`); symbol only: `public/brand/symbol.svg`. Brand files (SVG/PNG/app icons) in `public/brand/`; favicon in `public/favicon.svg|ico`. Regenerate PNGs with the commands in `DESIGN-SYSTEM.md` and open them before committing (a headless render once produced a blank icon).
 

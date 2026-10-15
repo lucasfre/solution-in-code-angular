@@ -46,7 +46,7 @@ import { RESULTADOS_LOTERIA } from '../products/products';
     </section>
 
     <!-- Como trabalhamos -->
-    <section class="bg-inverse">
+    <section class="bg-inverse border-y border-line">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
         <p class="text-sm font-bold uppercase tracking-wider text-accent mb-4">Como trabalhamos</p>
         <h2 class="text-3xl sm:text-4xl font-bold text-inverse-fg mb-4">Desenvolvimento com IA e agentes</h2>
