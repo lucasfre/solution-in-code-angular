@@ -66,7 +66,8 @@ Full guide (tokens, logo rules, components, contrast): `DESIGN-SYSTEM.md`. Keep 
 ## Known Pitfalls
 
 - **Never change the product URLs** (`/produtos/resultados-loteria-do-brasil` and `.../privacidade`). They are registered outside the site: Play Store / App Store listings, the Meta app settings and the Facebook page button. New pages for a product go under its current path.
-- The Instagram `@resultadosloteria` is **not** ours (it promotes a competitor app). Only add an Instagram link to `products.ts` once the owner confirms the handle.
+- Official Instagram is `@resultados.loteria.brasil`. `@resultadosloteria` is **not** ours (it promotes a competitor app).
+- The privacy policy page uses the same text as the in-app screen (`resultado-loteria-app/src/screens/privacy-policy-screen`). Change both together.
 
 - `docs/` is committed build output, so `src/styles.css` excludes it from Tailwind scanning (`@source not "../docs"`). Without it, classes from the old build leak into the CSS.
 - `ng build` prints `rules skipped due to selector errors: & -> Empty sub-selector`. This is expected: Tailwind v4 outputs nested CSS (`&:hover { @media (hover: hover) {...} }`) that the Angular optimizer doesn't flatten; the rules are kept and work in current browsers.

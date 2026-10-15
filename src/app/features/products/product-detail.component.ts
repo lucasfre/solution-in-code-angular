@@ -47,7 +47,7 @@ import { RESULTADOS_LOTERIA } from './products';
 
       <!-- Redes -->
       <h2 class="text-2xl font-bold text-fg mb-2">Resultados também em vídeo</h2>
-      <p class="text-fg-muted mb-6">Acompanhe os sorteios no YouTube e no Facebook.</p>
+      <p class="text-fg-muted mb-6">Acompanhe os sorteios no YouTube, no Facebook e no Instagram.</p>
       <div class="flex flex-wrap gap-3 mb-12">
         <a [href]="app.youtube" target="_blank" rel="noopener noreferrer" class="btn-secondary">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -60,6 +60,14 @@ import { RESULTADOS_LOTERIA } from './products';
             <path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/>
           </svg>
           Facebook
+        </a>
+        <a [href]="app.instagram" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
+          Instagram
         </a>
       </div>
 

@@ -18,4 +18,5 @@ export const RESULTADOS_LOTERIA = {
   appStore: 'https://apps.apple.com/br/app/resultados-loteria-do-brasil/id1548330205',
   youtube: 'https://www.youtube.com/@resultadosloteriadobrasil',
   facebook: 'https://www.facebook.com/resultadosloteriadobrasil',
+  instagram: 'https://www.instagram.com/resultados.loteria.brasil/',
 };

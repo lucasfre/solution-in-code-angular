@@ -6,8 +6,8 @@ Site institucional da **Solution in Code**, publicado em [solutionincode.com.br]
 
 - Página inicial com o app em destaque e os botões das lojas
 - Lista de produtos
-- Página do app **Resultados Loteria do Brasil**: funcionalidades, lojas, YouTube e Facebook
-- Política de privacidade do app, também no rodapé de todas as páginas
+- Página do app **Resultados Loteria do Brasil**: funcionalidades, lojas, YouTube, Facebook e Instagram
+- Política de privacidade do app (mesmo texto da tela do app), também no rodapé de todas as páginas
 
 Os endereços dos produtos estão cadastrados nas lojas, na Meta e na página do Facebook. **Não mude** `/produtos/resultados-loteria-do-brasil` nem `/produtos/resultados-loteria-do-brasil/privacidade`. Os dados de cada app (nome, resumo, links) ficam em `src/app/features/products/products.ts`.
 
