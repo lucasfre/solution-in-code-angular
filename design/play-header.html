@@ -1,0 +1,46 @@
+<!doctype html>
+<!--
+  Fonte do cabeçalho da página de desenvolvedor na Play Store (public/brand/play-header.png).
+  Exigência da Play: 4096 x 2304, JPEG ou PNG de 24 bits sem transparência, até 1 MB.
+  Gerar (na raiz do repositório):
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
+    --force-device-scale-factor=1 --window-size=4096,2304 --virtual-time-budget=8000 \
+    --screenshot=public/brand/play-header.png "file://$PWD/design/play-header.html"
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@700&display=block" rel="stylesheet">
+<style>
+  html, body { margin: 0; width: 4096px; height: 2304px; background: #121212; overflow: hidden; }
+  .fundo { position: absolute; right: -650px; top: 50%; width: 2200px; height: 2200px; transform: translateY(-50%); }
+  .conteudo { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .logo { display: inline-flex; align-items: center; gap: .55em; font: 700 200px/0.95 'Space Grotesk'; letter-spacing: .01em; text-transform: uppercase; color: #FAFAF8; }
+  .logo svg { width: 2.4em; height: 2.4em; flex-shrink: 0; }
+  .nome { display: flex; flex-direction: column; }
+  .linha { display: flex; gap: .3em; }
+  .frase { margin-top: 150px; display: flex; align-items: center; gap: .55em; font: 500 100px 'JetBrains Mono'; letter-spacing: 0; color: #B8B8B4; }
+  .prompt { color: #FF5B1F; }
+  .cursor { display: inline-block; width: .55em; height: 1.05em; margin-left: -.35em; background: #FF5B1F; }
+</style>
+</head>
+<body>
+  <svg class="fundo" viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="72,16 28,38 72,62" stroke="#1B1B1A" stroke-width="13"/>
+    <line x1="72" y1="62" x2="28" y2="84" stroke="#26170F" stroke-width="13"/>
+  </svg>
+  <div class="conteudo">
+    <div class="logo">
+      <svg viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="72,16 28,38 72,62" stroke="#FAFAF8" stroke-width="13"/>
+        <line x1="72" y1="62" x2="28" y2="84" stroke="#FF5B1F" stroke-width="13"/>
+      </svg>
+      <div class="nome">
+        <span>Solution</span>
+        <span class="linha"><span style="color:#FF5B1F">In</span><span>Code</span></span>
+      </div>
+    </div>
+    <div class="frase"><span class="prompt">&gt;</span><span>Código que resolve</span><span class="cursor"></span></div>
+  </div>
+</body>
+</html>

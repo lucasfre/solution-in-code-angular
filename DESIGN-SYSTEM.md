@@ -64,6 +64,8 @@ Um **S** formado por dois chevrons de código encaixados: `<` em cima e `>` emba
 | `public/brand/logo.png` / `logo-inverse.png` | Logo completo, 1281×432, fundo transparente |
 | `public/brand/app-icon.svg` / `app-icon-inverse.svg` | Ícone de app (quadrado, sem cantos: as lojas arredondam) |
 | `public/brand/app-icon-1024.png` / `app-icon-512.png` / `app-icon-inverse-1024.png` | Ícone para lojas, redes sociais e perfis |
+| `public/brand/app-icon-inverse-512.png` | Ícone escuro 512×512 (PNG 24 bits, sem transparência): ícone da página de desenvolvedor na Play Store |
+| `public/brand/play-header.png` | Cabeçalho da página de desenvolvedor na Play Store (4096×2304, PNG 24 bits): logo claro sobre ink e o slogan `> Código que resolve` em JetBrains Mono. Fonte: [`design/play-header.html`](design/play-header.html) |
 | `public/favicon.svg`, `public/favicon.ico` (16/32/48) | Ícone da aba do navegador |
 | `public/apple-touch-icon.png` (180×180) | Ícone ao salvar o site na tela inicial do iPhone |
 
@@ -78,11 +80,12 @@ CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 "$CHROME" --headless=new --hide-scrollbars --window-size=1024,1024 --screenshot=public/brand/app-icon-1024.png "file://$PWD/public/brand/app-icon.svg"
 "$CHROME" --headless=new --hide-scrollbars --window-size=1024,1024 --screenshot=public/brand/app-icon-inverse-1024.png "file://$PWD/public/brand/app-icon-inverse.svg"
 sips -z 512 512 public/brand/app-icon-1024.png --out public/brand/app-icon-512.png
+sips -z 512 512 public/brand/app-icon-inverse-1024.png --out public/brand/app-icon-inverse-512.png
 sips -z 180 180 public/brand/app-icon-1024.png --out public/apple-touch-icon.png
 sips -s format ico -z 48 48 public/brand/app-icon-1024.png --out public/favicon.ico
 ```
 
-Abra os PNGs gerados antes do commit para conferir que não saíram em branco. O `favicon.ico` sai com um tamanho só (48 px); os navegadores atuais usam o `favicon.svg`. O `logo.png` e o `logo-inverse.png` dependem da fonte: capture o `<app-logo>` renderizado no navegador, com fundo transparente.
+Abra os PNGs gerados antes do commit para conferir que não saíram em branco. O `favicon.ico` sai com um tamanho só (48 px); os navegadores atuais usam o `favicon.svg`. O cabeçalho da Play sai do [`design/play-header.html`](design/play-header.html), e o comando está no comentário do arquivo. O `logo.png` e o `logo-inverse.png` dependem da fonte: capture o `<app-logo>` renderizado no navegador, com fundo transparente.
 
 ## Cores
 
