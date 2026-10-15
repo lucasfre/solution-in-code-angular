@@ -45,6 +45,8 @@ src/app/
 └── app.config.ts          # Standalone app configuration
 ```
 
+`design/` (repo root) holds the HTML sources of the brand art (`play-header.html`, `og-image.html`); each file's header comment has the headless Chrome command that renders its PNG into `public/brand/`.
+
 Build output goes to `docs/` for GitHub Pages. The post-build script flattens Angular's `browser/` subfolder and creates `404.html` for SPA routing. The `CNAME` file in `public/` maps to `solutionincode.com.br`.
 
 ## Key Notes

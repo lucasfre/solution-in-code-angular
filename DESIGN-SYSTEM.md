@@ -56,6 +56,14 @@ Um **S** formado por dois chevrons de código encaixados: `<` em cima e `>` emba
 
 **Não faça:** trocar as cores, pintar o traço de cima de laranja, girar, esticar, trocar a fonte do nome, colocar o logo sobre o laranja ou sobre foto sem contraste.
 
+### Slogan
+
+**Código que resolve.** Conversa com o nome (*Solution in Code*, solução em código) e não fala de IA, então serve para qualquer peça.
+
+- **No site:** é o título da home, em Space Grotesk, com "resolve" em `text-accent-strong`.
+- **Nas artes** (cabeçalho da Play, prévia de compartilhamento): aparece como linha de terminal, `> Código que resolve▌`, em JetBrains Mono 500. O `>` e o cursor de bloco vão em laranja da marca, e o texto em `inverse-muted` no fundo escuro ou `fg-muted` no claro. O `>` repete o chevron do símbolo.
+- Se não couber nada além do logo, use só ele; o slogan é opcional.
+
 ### Arquivos
 
 | Arquivo | Uso |
@@ -143,6 +151,8 @@ O `@theme` começa com `--color-*: initial`. Por isso **classes como `bg-gray-90
 ## Tipografia
 
 **Space Grotesk** (Google Fonts, licença OFL: livre para uso comercial), pesos 400, 500 e 700. Já é a fonte padrão (`font-sans`) de toda a página. Títulos têm `letter-spacing: -0.02em` automático.
+
+**JetBrains Mono** (Google Fonts, OFL), peso 500, aparece **só nas artes da marca**, para o slogan em estilo terminal (veja "Slogan"). O site não carrega essa fonte.
 
 | Elemento | Classes |
 |---|---|
