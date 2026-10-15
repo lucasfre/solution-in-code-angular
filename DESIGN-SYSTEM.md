@@ -66,6 +66,7 @@ Um **S** formado por dois chevrons de código encaixados: `<` em cima e `>` emba
 | `public/brand/app-icon-1024.png` / `app-icon-512.png` / `app-icon-inverse-1024.png` | Ícone para lojas, redes sociais e perfis |
 | `public/brand/app-icon-inverse-512.png` | Ícone escuro 512×512 (PNG 24 bits, sem transparência): ícone da página de desenvolvedor na Play Store |
 | `public/brand/play-header.png` | Cabeçalho da página de desenvolvedor na Play Store (4096×2304, PNG 24 bits): logo claro sobre ink e o slogan `> Código que resolve` em JetBrains Mono. Fonte: [`design/play-header.html`](design/play-header.html) |
+| `public/brand/og-image-dark.png` / `og-image-light.png` | Prévia ao compartilhar o link do site (1200×630). A escura é a `og:image` do `index.html`; a clara serve para posts e apresentações. Fonte: [`design/og-image.html`](design/og-image.html) (`?tema=claro` gera a clara) |
 | `public/favicon.svg`, `public/favicon.ico` (16/32/48) | Ícone da aba do navegador |
 | `public/apple-touch-icon.png` (180×180) | Ícone ao salvar o site na tela inicial do iPhone |
 
@@ -85,7 +86,7 @@ sips -z 180 180 public/brand/app-icon-1024.png --out public/apple-touch-icon.png
 sips -s format ico -z 48 48 public/brand/app-icon-1024.png --out public/favicon.ico
 ```
 
-Abra os PNGs gerados antes do commit para conferir que não saíram em branco. O `favicon.ico` sai com um tamanho só (48 px); os navegadores atuais usam o `favicon.svg`. O cabeçalho da Play sai do [`design/play-header.html`](design/play-header.html), e o comando está no comentário do arquivo. O `logo.png` e o `logo-inverse.png` dependem da fonte: capture o `<app-logo>` renderizado no navegador, com fundo transparente.
+Abra os PNGs gerados antes do commit para conferir que não saíram em branco. O `favicon.ico` sai com um tamanho só (48 px); os navegadores atuais usam o `favicon.svg`. O cabeçalho da Play sai do [`design/play-header.html`](design/play-header.html) e as prévias de compartilhamento do [`design/og-image.html`](design/og-image.html). Os comandos estão no comentário de cada arquivo. O `logo.png` e o `logo-inverse.png` dependem da fonte: capture o `<app-logo>` renderizado no navegador, com fundo transparente.
 
 ## Cores
 
@@ -167,6 +168,8 @@ Todos estão em [`src/styles.css`](src/styles.css) (`@layer components`), então
 | `.link` | Link dentro de texto: laranja forte, sublinha no hover. |
 | `<app-section-title>` | Título + subtítulo de seção, centralizados. |
 | `<app-store-badges>` | Botões do Google Play e da App Store: pretos no tema claro, claros no escuro (`bg-fg text-canvas`). Entradas `googlePlay` e `appStore`. |
+
+**S decorativo:** o topo da home tem o S da marca grande e apagado à direita (`stroke-surface-muted` + `stroke-accent-soft`, `aria-hidden`), como no cabeçalho da Play. Só aparece a partir de `lg` (1024 px), para não ficar atrás do texto no celular. Use só em seções de destaque, não em todas.
 
 **Ícones:** SVG inline 24×24, `fill="none"`, `stroke="currentColor"`, `stroke-width="2"`, pontas arredondadas (estilo outline). A cor vem da classe de texto (`text-accent-strong`, `text-fg-muted`...).
 

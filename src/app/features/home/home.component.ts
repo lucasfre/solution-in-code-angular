@@ -9,22 +9,30 @@ import { RESULTADOS_LOTERIA } from '../products/products';
   imports: [RouterLink, StoreBadgesComponent],
   template: `
     <!-- Hero -->
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-20">
-      <p class="text-sm font-bold uppercase tracking-wider text-accent-strong mb-4">Sistemas · Apps · Ferramentas</p>
-      <h1 class="max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-bold text-fg mb-6">
-        Código que <span class="text-accent-strong">resolve</span>
-      </h1>
-      <p class="max-w-2xl text-lg sm:text-xl text-fg-muted mb-10">
-        A Solution in Code une a visão de desenvolvedores especialistas, com mais de 11 anos de mercado, à
-        produtividade da IA. Criamos sistemas pessoais e empresariais, apps e ferramentas com mais desempenho e
-        qualidade.
-      </p>
-      <a routerLink="/produtos" class="btn-primary px-8">
-        Conheça nossos produtos
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
+    <section class="relative overflow-hidden">
+      <!-- S da marca ao fundo, só decoração (mesmo do cabeçalho da Play) -->
+      <svg class="pointer-events-none absolute -right-32 top-1/2 hidden h-[36rem] w-[36rem] -translate-y-1/2 lg:block"
+           viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="72,16 28,38 72,62" class="stroke-surface-muted" stroke-width="13" />
+        <line x1="72" y1="62" x2="28" y2="84" class="stroke-accent-soft" stroke-width="13" />
+      </svg>
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-20">
+        <p class="text-sm font-bold uppercase tracking-wider text-accent-strong mb-4">Sistemas · Apps · Ferramentas</p>
+        <h1 class="max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-bold text-fg mb-6">
+          Código que <span class="text-accent-strong">resolve</span>
+        </h1>
+        <p class="max-w-2xl text-lg sm:text-xl text-fg-muted mb-10">
+          A Solution in Code une a visão de desenvolvedores especialistas, com mais de 11 anos de mercado, à
+          produtividade da IA. Criamos sistemas pessoais e empresariais, apps e ferramentas com mais desempenho e
+          qualidade.
+        </p>
+        <a routerLink="/produtos" class="btn-primary px-8">
+          Conheça nossos produtos
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
     </section>
 
     <!-- O que fazemos -->

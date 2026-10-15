@@ -66,6 +66,8 @@ Full guide (tokens, logo rules, components, contrast): `DESIGN-SYSTEM.md`. Keep 
 
 ## Known Pitfalls
 
+- Link previews (WhatsApp, LinkedIn, Facebook, X) come from the static `og:*` / `twitter:card` tags in `src/index.html`: crawlers don't run Angular, so every page shares the same preview (`public/brand/og-image-dark.png`, source `design/og-image.html`). Don't add `og:url` there: all routes are copies of `index.html` and it would point every page to the home.
+
 - **Never change the product URLs** (`/produtos/resultados-loteria-do-brasil` and `.../privacidade`). They are registered outside the site: Play Store / App Store listings, the Meta app settings and the Facebook page button. New pages for a product go under its current path.
 - Official Instagram is `@resultados.loteria.brasil`. `@resultadosloteria` is **not** ours (it promotes a competitor app).
 - The privacy policy page uses the same text as the in-app screen (`resultado-loteria-app/src/screens/privacy-policy-screen`). Change both together.
