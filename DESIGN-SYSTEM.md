@@ -10,7 +10,7 @@ Identidade visual da Solution in Code aplicada ao site. A fonte da verdade é o 
 
 ```html
 <!-- Logo -->
-<app-logo class="text-sm" />                       <!-- fundo claro -->
+<app-logo class="text-sm" />                       <!-- segue o tema (claro ou escuro) -->
 <app-logo tone="inverse" class="text-sm" />        <!-- fundo escuro -->
 <img src="brand/symbol.svg" alt="Solution in Code" class="h-10 w-10" />  <!-- só o símbolo -->
 
@@ -27,7 +27,7 @@ Identidade visual da Solution in Code aplicada ao site. A fonte da verdade é o 
 <div class="card p-8">Conteúdo</div>
 <a routerLink="/x" class="card-interactive p-8">Cartão clicável</a>
 
-<!-- Botões das lojas (fundo claro) -->
+<!-- Botões das lojas (pretos no claro, claros no escuro) -->
 <app-store-badges [googlePlay]="app.googlePlay" [appStore]="app.appStore" />
 
 <!-- Seção escura -->
@@ -49,7 +49,7 @@ Um **S** formado por dois chevrons de código encaixados: `<` em cima e `>` emba
 | **Completo** (símbolo + "SOLUTION / IN CODE") | Cabeçalho, rodapé, documentos, apresentações | `<app-logo />` | `brand/logo.png`, `brand/logo-inverse.png` |
 | **Símbolo** | Favicon, ícone de app, avatar de rede social, espaços pequenos | `<img src="brand/symbol.svg" alt="Solution in Code">` | `brand/symbol.svg`, `brand/symbol-inverse.svg` |
 
-- **Tom:** `tone="default"` (padrão) para fundo claro, com traço de cima em `ink`. `tone="inverse"` para fundo escuro, com traço de cima em `paper`. O traço laranja e o "IN" laranja não mudam.
+- **Tom:** `tone="default"` (padrão) usa a cor do texto do tema: traço de cima em `ink` no modo claro e em `paper` no escuro. `tone="inverse"` é para seções escuras (`bg-inverse`), com traço de cima sempre em `paper`. O traço laranja e o "IN" laranja não mudam.
 - **Tamanho:** o logo segue o `font-size` do elemento (classes `text-*`). O símbolo tem 2,4× o tamanho da fonte.
 - **Tamanho mínimo:** logo completo com 28 px de altura (`text-xs`); símbolo com 16 px. Abaixo de 32 px use o [`favicon.svg`](public/favicon.svg), que tem traço mais grosso.
 - **Área de respiro:** deixe livre em volta do logo pelo menos a altura da palavra "IN".
@@ -101,29 +101,37 @@ Os valores ficam direto nos tokens do `@theme` (`canvas` = paper, `fg` e `invers
 
 ### Tokens (classes do Tailwind)
 
-Cada token vira classe do Tailwind com qualquer prefixo de cor: `bg-`, `text-`, `border-`, `stroke-`, `fill-` etc.
+Cada token vira classe do Tailwind com qualquer prefixo de cor: `bg-`, `text-`, `border-`, `stroke-`, `fill-` etc. O valor muda sozinho com o tema (veja "Modo claro e escuro").
 
-| Token | Valor | Uso |
-|---|---|---|
-| `canvas` | `#FAFAF8` | Fundo da página (`bg-canvas`) |
-| `surface` | `#FFFFFF` | Cartões e blocos (`bg-surface`) |
-| `surface-muted` | `#F2F1EC` | Fundo alternativo |
-| `line` | `#E6E4DF` | Bordas e divisórias (`border-line`) |
-| `fg` | `#121212` | Texto principal (`text-fg`) |
-| `fg-muted` | `#5C5C57` | Texto secundário (`text-fg-muted`) |
-| `accent` | `#FF5B1F` | Fundo de botão principal; texto laranja **só em fundo escuro** |
-| `accent-hover` | `#FF7A47` | Hover do botão principal |
-| `accent-strong` | `#C2410C` | **Texto e ícones laranja sobre fundo claro** (`text-accent-strong`) |
-| `accent-soft` | `#FFF1EB` | Fundo suave: ícones em destaque, avisos (aceita `.link` por cima com contraste AA) |
-| `on-accent` | `#121212` | Texto sobre o laranja (`text-on-accent`) |
-| `inverse` | `#121212` | Fundo de seções escuras (`bg-inverse`) |
-| `inverse-fg` | `#FAFAF8` | Texto principal em seção escura |
-| `inverse-muted` | `#B8B8B4` | Texto secundário em seção escura |
+| Token | Claro | Escuro | Uso |
+|---|---|---|---|
+| `canvas` | `#FAFAF8` | `#121212` | Fundo da página (`bg-canvas`) |
+| `surface` | `#FFFFFF` | `#1B1B1A` | Cartões e blocos (`bg-surface`) |
+| `surface-muted` | `#F2F1EC` | `#242422` | Fundo alternativo |
+| `line` | `#E6E4DF` | `#2F2F2C` | Bordas e divisórias (`border-line`) |
+| `fg` | `#121212` | `#FAFAF8` | Texto principal (`text-fg`) |
+| `fg-muted` | `#5C5C57` | `#B8B8B4` | Texto secundário (`text-fg-muted`) |
+| `accent` | `#FF5B1F` | `#FF5B1F` | Fundo de botão principal; texto laranja **só em seção escura** (`bg-inverse`) |
+| `accent-hover` | `#FF7A47` | `#FF7A47` | Hover do botão principal |
+| `accent-strong` | `#C2410C` | `#FF7A47` | **Texto e ícones laranja sobre o fundo da página** (`text-accent-strong`) |
+| `accent-soft` | `#FFF1EB` | `#2A1A12` | Fundo suave: ícones em destaque, avisos (aceita `.link` por cima com contraste AA) |
+| `on-accent` | `#121212` | `#121212` | Texto sobre o laranja (`text-on-accent`) |
+| `inverse` | `#121212` | `#0B0B0B` | Fundo de seções escuras (`bg-inverse`), escuras nos dois temas |
+| `inverse-fg` | `#FAFAF8` | `#FAFAF8` | Texto principal em seção escura |
+| `inverse-muted` | `#B8B8B4` | `#B8B8B4` | Texto secundário em seção escura |
+
+### Modo claro e escuro
+
+- **Como funciona:** o `<html>` recebe `data-theme="light"` ou `"dark"`. Um script no `index.html` define o tema **antes da página aparecer**, sem piscar: usa a escolha salva (`localStorage`, chave `theme`) ou, na primeira visita, o tema do sistema. O botão de sol/lua no header troca e salva. Os valores escuros estão em `:root[data-theme="dark"]` no `src/styles.css`.
+- **Nos componentes não muda nada:** use os tokens de sempre. **Não use a variante `dark:`**, porque o tema é trocado pelos tokens.
+- **Seções escuras (`bg-inverse`)** continuam escuras nos dois temas. No escuro ficam um tom abaixo do fundo, então leve uma borda `border-line` (`border-t`/`border-y`) para separar.
+- **Cor nova:** defina o valor claro no `@theme` e o escuro em `:root[data-theme="dark"]`, e confira o contraste nos dois.
+- **Teste sempre nos dois temas** antes de abrir o PR.
 
 ### Regras de contraste (WCAG AA)
 
-- **Texto laranja em fundo claro:** sempre `text-accent-strong` (5:1). O `#FF5B1F` puro sobre o `paper` dá só 3:1 e não passa nem para texto grande.
-- **Texto laranja em fundo escuro:** `text-accent` (6:1).
+- **Texto laranja no fundo da página:** sempre `text-accent-strong`: 5:1 no claro (`#C2410C`) e 7:1 no escuro (`#FF7A47`). O `#FF5B1F` puro sobre o `paper` dá só 3:1 e não passa nem para texto grande.
+- **Texto laranja em seção escura (`bg-inverse`):** `text-accent` (6:1).
 - **Botão laranja:** texto escuro (`text-on-accent`, 6:1). Texto branco sobre o laranja dá 3:1, não use.
 - O logo é exceção: o "IN" usa o laranja da marca em qualquer fundo.
 
@@ -153,12 +161,12 @@ Todos estão em [`src/styles.css`](src/styles.css) (`@layer components`), então
 |---|---|
 | `<app-logo>` | Logo completo. Entrada `tone` (`default` \| `inverse`). Já tem `role="img"` e `aria-label`. |
 | `.btn-primary` | Botão principal: laranja com texto escuro. Uma ação principal por tela. |
-| `.btn-secondary` | Botão secundário: branco com borda. |
-| `.card` | Bloco branco com borda e cantos arredondados. |
+| `.btn-secondary` | Botão secundário: fundo `surface` com borda. |
+| `.card` | Bloco `surface` com borda e cantos arredondados. |
 | `.card-interactive` | `.card` com borda laranja no hover, para cartões clicáveis. |
 | `.link` | Link dentro de texto: laranja forte, sublinha no hover. |
 | `<app-section-title>` | Título + subtítulo de seção, centralizados. |
-| `<app-store-badges>` | Botões escuros do Google Play e da App Store, para fundo claro. Entradas `googlePlay` e `appStore`. |
+| `<app-store-badges>` | Botões do Google Play e da App Store: pretos no tema claro, claros no escuro (`bg-fg text-canvas`). Entradas `googlePlay` e `appStore`. |
 
 **Ícones:** SVG inline 24×24, `fill="none"`, `stroke="currentColor"`, `stroke-width="2"`, pontas arredondadas (estilo outline). A cor vem da classe de texto (`text-accent-strong`, `text-fg-muted`...).
 
@@ -166,6 +174,6 @@ Todos estão em [`src/styles.css`](src/styles.css) (`@layer components`), então
 
 ## Como evoluir
 
-- **Nova cor:** adicione o token no `@theme` de `src/styles.css` (ex.: `--color-success: #15803d;`), confira o contraste e registre na tabela de tokens acima.
+- **Nova cor:** adicione o token no `@theme` de `src/styles.css` (ex.: `--color-success: #15803d;`) e o valor escuro em `:root[data-theme="dark"]`, confira o contraste nos dois temas e registre na tabela de tokens acima.
 - **Novo componente visual reaproveitável:** adicione em `@layer components` no `src/styles.css` (com `@apply` de utilitários) e registre na tabela de componentes.
 - **Mudou o símbolo ou as cores da marca:** atualize o `<app-logo>`, os SVGs de `public/brand/` e o `public/favicon.svg`, e gere os PNGs de novo (comandos em "Gerar os PNGs de novo").

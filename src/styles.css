@@ -39,6 +39,28 @@
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
+/*
+ * Modo escuro: o index.html põe data-theme="dark" | "light" no <html> antes da página aparecer
+ * (escolha salva no localStorage ou, na primeira visita, o tema do sistema). O botão do header troca.
+ * Só os tokens mudam; os componentes não precisam de `dark:`.
+ */
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-canvas: #121212;
+  --color-surface: #1b1b1a;
+  --color-surface-muted: #242422;
+  --color-line: #2f2f2c;
+  --color-fg: #fafaf8;
+  --color-fg-muted: #b8b8b4;
+  --color-accent-strong: #ff7a47; /* laranja para texto sobre fundo escuro */
+  --color-accent-soft: #2a1a12;
+  --color-inverse: #0b0b0b; /* seções escuras ficam um tom abaixo do fundo */
+}
+
 @layer base {
   ::selection {
     background-color: var(--color-accent);

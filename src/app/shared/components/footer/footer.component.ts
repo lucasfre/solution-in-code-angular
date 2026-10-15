@@ -8,7 +8,7 @@ import { LogoComponent } from '../logo/logo.component';
   standalone: true,
   imports: [RouterLink, LogoComponent],
   template: `
-    <footer class="bg-inverse">
+    <footer class="bg-inverse border-t border-line">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8">
           <app-logo tone="inverse" class="text-sm" />
