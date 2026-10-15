@@ -45,6 +45,8 @@ src/app/
 └── app.config.ts          # Standalone app configuration
 ```
 
+`design/` (repo root) holds the HTML sources of the brand art (`play-header.html`, `og-image.html`); each file's header comment has the headless Chrome command that renders its PNG into `public/brand/`.
+
 Build output goes to `docs/` for GitHub Pages. The post-build script flattens Angular's `browser/` subfolder and creates `404.html` for SPA routing. The `CNAME` file in `public/` maps to `solutionincode.com.br`.
 
 ## Key Notes
@@ -65,6 +67,8 @@ Full guide (tokens, logo rules, components, contrast): `DESIGN-SYSTEM.md`. Keep 
 - Logo: `<app-logo tone="default|inverse" />` (full logo), sized by font-size (`class="text-sm"`); symbol only: `public/brand/symbol.svg`. Brand files (SVG/PNG/app icons) in `public/brand/`; favicon in `public/favicon.svg|ico`. Regenerate PNGs with the commands in `DESIGN-SYSTEM.md` and open them before committing (a headless render once produced a blank icon).
 
 ## Known Pitfalls
+
+- Link previews (WhatsApp, LinkedIn, Facebook, X) come from the static `og:*` / `twitter:card` tags in `src/index.html`: crawlers don't run Angular, so every page shares the same preview (`public/brand/og-image-dark.png`, source `design/og-image.html`). Don't add `og:url` there: all routes are copies of `index.html` and it would point every page to the home.
 
 - **Never change the product URLs** (`/produtos/resultados-loteria-do-brasil` and `.../privacidade`). They are registered outside the site: Play Store / App Store listings, the Meta app settings and the Facebook page button. New pages for a product go under its current path.
 - Official Instagram is `@resultados.loteria.brasil`. `@resultadosloteria` is **not** ours (it promotes a competitor app).

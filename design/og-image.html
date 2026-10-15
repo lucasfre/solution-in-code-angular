@@ -1,0 +1,53 @@
+<!doctype html>
+<!--
+  Fonte da imagem de prévia ao compartilhar o link do site (og:image): public/brand/og-image-dark.png e og-image-light.png.
+  Tamanho padrão das redes: 1200 x 630. "?tema=claro" gera a versão clara.
+  Gerar (na raiz do repositório):
+  CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  "$CHROME" --headless=new --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=8000 \
+    --screenshot=public/brand/og-image-dark.png "file://$PWD/design/og-image.html"
+  "$CHROME" --headless=new --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=8000 \
+    --screenshot=public/brand/og-image-light.png "file://$PWD/design/og-image.html?tema=claro"
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@700&display=block" rel="stylesheet">
+<script>
+  if (location.search.indexOf('tema=claro') !== -1) document.documentElement.className = 'claro';
+</script>
+<style>
+  :root { --fundo: #121212; --texto: #fafaf8; --frase: #b8b8b4; --s-fundo: #1b1b1a; --s-fundo-laranja: #26170f; }
+  :root.claro { --fundo: #fafaf8; --texto: #121212; --frase: #5c5c57; --s-fundo: #efeeea; --s-fundo-laranja: #fde8de; }
+  html, body { margin: 0; width: 1200px; height: 630px; background: var(--fundo); overflow: hidden; }
+  .fundo { position: absolute; right: -200px; top: 50%; width: 660px; height: 660px; transform: translateY(-50%); }
+  .conteudo { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .logo { display: inline-flex; align-items: center; gap: .55em; font: 700 72px/0.95 'Space Grotesk'; letter-spacing: .01em; text-transform: uppercase; color: var(--texto); }
+  .logo svg { width: 2.4em; height: 2.4em; flex-shrink: 0; }
+  .nome { display: flex; flex-direction: column; }
+  .linha { display: flex; gap: .3em; }
+  .frase { margin-top: 56px; display: flex; align-items: center; gap: .55em; font: 500 36px 'JetBrains Mono'; color: var(--frase); }
+  .laranja { color: #ff5b1f; }
+  .cursor { display: inline-block; width: .55em; height: 1.05em; margin-left: -.35em; background: #ff5b1f; }
+</style>
+</head>
+<body>
+  <svg class="fundo" viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="72,16 28,38 72,62" style="stroke: var(--s-fundo)" stroke-width="13"/>
+    <line x1="72" y1="62" x2="28" y2="84" style="stroke: var(--s-fundo-laranja)" stroke-width="13"/>
+  </svg>
+  <div class="conteudo">
+    <div class="logo">
+      <svg viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="72,16 28,38 72,62" style="stroke: var(--texto)" stroke-width="13"/>
+        <line x1="72" y1="62" x2="28" y2="84" stroke="#ff5b1f" stroke-width="13"/>
+      </svg>
+      <div class="nome">
+        <span>Solution</span>
+        <span class="linha"><span class="laranja">In</span><span>Code</span></span>
+      </div>
+    </div>
+    <div class="frase"><span class="laranja">&gt;</span><span>Código que resolve</span><span class="cursor"></span></div>
+  </div>
+</body>
+</html>

@@ -9,6 +9,7 @@ Site institucional da **Solution in Code**, publicado em [solutionincode.com.br]
 - Página do app **Resultados Loteria do Brasil**: funcionalidades, lojas, YouTube, Facebook e Instagram
 - Política de privacidade do app (mesmo texto da tela do app), também no rodapé de todas as páginas
 - Modo claro e escuro: segue o tema do sistema na primeira visita e lembra a escolha feita no botão do header
+- Prévia com imagem ao compartilhar o link no WhatsApp, LinkedIn, Facebook e X (`og:image`)
 
 Os endereços dos produtos estão cadastrados nas lojas, na Meta e na página do Facebook. **Não mude** `/produtos/resultados-loteria-do-brasil` nem `/produtos/resultados-loteria-do-brasil/privacidade`. Os dados de cada app (nome, resumo, links) ficam em `src/app/features/products/products.ts`.
 
@@ -35,7 +36,7 @@ O GitHub Pages publica a pasta `docs/` da branch `master` no domínio `solutioni
 
 ## Design system
 
-Cores, fonte, logo, componentes e regras de uso da marca: [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md). Os arquivos da marca (logo, símbolo, ícones de app, favicon) ficam em [`public/brand/`](public/brand).
+Cores, fontes, logo, slogan, modo claro e escuro, componentes e regras de uso da marca: [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md). Os arquivos da marca (logo, símbolo, ícones de app, cabeçalho da Play, prévias de compartilhamento) ficam em [`public/brand/`](public/brand), e as fontes das artes em [`design/`](design).
 
 ## Estrutura
 
@@ -47,6 +48,7 @@ src/
     ├── shared/components/   # Header, Footer, Logo, SectionTitle, StoreBadges
     └── features/            # home/, products/
 public/                      # arquivos copiados para o site (brand/, favicon, CNAME)
+design/                      # fontes HTML das artes (cabeçalho da Play, prévia de compartilhamento)
 docs/                        # site gerado pelo build (não editar à mão)
 ```
 
